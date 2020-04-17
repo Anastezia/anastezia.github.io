@@ -1,0 +1,97 @@
+<head>  
+        <meta charset="utf-8"> <!-- Определение кодировки --> 
+		<link href="..\css\galery.css" rel="stylesheet">
+        <title>Галерея</title>
+    </head>
+	<script type="text/javascript">
+	
+		password=prompt('Щоб перейти на цю сторінку, введіть пароль:');
+		if (password=='Настя') (alert('Пароль введено вірно!') )
+			else (alert('На жаль, пароль невірний!'), top.location.href="../index.html")
+	
+var current=1;
+var kolvo=5; //количество картинок
+ 
+// массив картинок
+tumb= new Array();
+tumb[0]=new Image();   
+tumb[1]=new Image();   
+tumb[2]=new Image();   
+tumb[3]=new Image();
+tumb[4]=new Image();
+
+tumb[0].src="../images/1.jpg"
+tumb[1].src="../images/2.jpg"
+tumb[2].src="../images/3.jpg"
+tumb[3].src="../images/4.jpg"
+tumb[4].src="../images/5.jpg"
+
+function frw(){
+	if (current < kolvo) {
+	current++;
+	document.images['r'].src=tumb[current-1].src;
+}
+}
+function bck(){
+	if (current > 1) {
+	current--;
+	document.images['r'].src=tumb[current-1].src;
+}
+}
+function sizer() {
+    size = document.getElementById("size").value;
+    img = document.getElementById("r");
+    img.width=100+100*size;
+	
+   }
+   
+</script>
+	
+    <body> 
+		<div id="menu">
+			<ul id="nav">
+				<li><a href="..\index.html">Головна</a>
+				<li><a href="..\html\prosebe.html">Про мене</a>
+				<ul>
+					<li><a href="..\html\hobi.html">Моє хобі</a>
+				</ul>
+					<li><a href="..\html\kontacty.html">Контакти</a>
+					<li><a href="..\html\galery.html">Галерея</a> 
+			</ul>
+		</div>
+
+
+		<div id="content">
+		<form name="Change_ram">
+           
+		   <p> Кордони малюнку:
+           
+		    <input type="text" name="borderChange" value="0">
+            <input type="button" value="Змінити" onclick="valueChange();">
+		   </p>
+        </form>
+		
+			<p> Розмір малюнку: <input  type="range" min="1" max="5" id="size" 
+			
+				oninput="sizer()" value="3" >
+				<input type="button" value="Назад" onClick="bck()">  
+				<input type="button" value="Вперед" onClick="frw()">
+				
+			</p>
+	 
+			 <p align="center"><img src="../images/1.jpg" alt="" id="r" width="50%">
+			</p>
+			
+		</div>
+   <script>
+   
+    var changeForm = document.forms["Change_ram"];
+    var border = changeForm.elements["borderChange"];
+            
+            function valueChange(){
+                 img = document.getElementById("r");
+                img.border=border.value;
+				}
+	</script>
+    </body>
+</html>
